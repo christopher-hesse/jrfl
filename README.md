@@ -11,8 +11,6 @@ The included functions are:
 * [`scan_discounted_sum`](https://github.com/deepmind/trfl/blob/master/docs/trfl.md#scan_discounted_sumsequence-decay-initial_value-reversefalse-sequence_lengthsnone-back_proptrue-namescan_discounted_sum)
 * [`batched_index`](https://github.com/deepmind/trfl/blob/master/docs/trfl.md#batched_indexvalues-indices)
 
-See the [TRFL Documentation](https://github.com/deepmind/trfl/blob/master/docs/trfl.md) for the documentation for each function.
-
 There are a few classes implementing [Tensorflow Probability](https://www.tensorflow.org/probability) interfaces since some of the TRFL functions expect them.  These are:
 
 * [`Distribution`](https://www.tensorflow.org/probability/api_docs/python/tfp/distributions/Distribution)
