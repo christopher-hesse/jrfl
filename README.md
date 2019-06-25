@@ -7,7 +7,7 @@ The included functions are:
 * `discrete_policy_gradient`
 * `discrete_policy_gradient_loss`
 * `policy_gradient`
-* `policy_gradient_loss
+* `policy_gradient_loss`
 * `scan_discounted_sum`
 * `batched_index`
 
