@@ -22,3 +22,4 @@ A few new functions included in this package are:
 
 * `assert_array` - check array shape and dtype
 * `broadcast_index` - a more general `batched_index`
+* `PRNGSequence` - an infinite iterator of `PRNGKey`s

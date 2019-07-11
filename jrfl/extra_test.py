@@ -1,7 +1,9 @@
+import itertools
+
 import numpy as np
 
 from .check import assert_allclose
-from .extra import broadcast_index
+from .extra import broadcast_index, PRNGSequence
 
 
 def test_broadcast_index():
@@ -61,3 +63,11 @@ def test_broadcast_index():
         ]
     )
     assert_allclose(result, expected_result)
+
+
+def test_prng_sequence():
+    v1 = list(itertools.islice(PRNGSequence(0), 10))
+    v2 = list(itertools.islice(PRNGSequence(0), 10))
+    v3 = list(itertools.islice(PRNGSequence(1), 10))
+    assert np.array_equal(v1, v2)
+    assert not np.array_equal(v1, v3)

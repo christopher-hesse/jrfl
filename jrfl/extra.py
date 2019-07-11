@@ -1,4 +1,8 @@
+import functools
+
 import jax.numpy as jp
+import jax
+import jax.random
 
 from .check import assert_array
 
@@ -30,3 +34,25 @@ def broadcast_index(values, indices):
     )
     flat_result = jp.squeeze(indexed_values, axis=-1)
     return flat_result.reshape(indices.shape)
+
+
+class PRNGSequence:
+    """
+    An iterator that returns a new PRNG key each time next() is called
+    """
+
+    def __init__(self, seed):
+        self._key = jax.random.PRNGKey(seed)
+        self._count = 0
+
+    def __iter__(self):
+        return self
+
+    @functools.partial(jax.jit, static_argnums=(0,))
+    def _next_key(self, count):
+        return jax.random.fold_in(self._key, count)
+
+    def __next__(self):
+        key = self._next_key(self._count)
+        self._count += 1
+        return key
