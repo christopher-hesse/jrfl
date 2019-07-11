@@ -20,12 +20,16 @@ def assert_array(arr, shape=None, dtypes=None):
                     dist_from_end = len(shape) - 1 - i
                     offset = len(arr.shape) - dist_from_end
                     continue
-                assert d is None or arr.shape[offset] == d, f"invalid shape actual={arr.shape} desired={shape}"
+                assert (
+                    d is None or arr.shape[offset] == d
+                ), f"invalid shape actual={arr.shape} desired={shape}"
                 offset += 1
         else:
             raise Exception("too many ellipses")
     if dtypes is not None:
-        assert arr.dtype in dtypes, arr.dtype, f"dtypes do not match actual={arr.dtype} allowed={dtypes}"
+        assert (
+            arr.dtype in dtypes
+        ), f"dtypes do not match actual={arr.dtype} allowed={dtypes}"
 
 
 def assert_allclose(a, b, rtol=1e-5, atol=1e-8):
